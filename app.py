@@ -4,8 +4,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 
-
 movie_final = pd.read_csv('_data/movie_final.csv')
+
 
 def recommend_similar_movie(movie_name):
   # Check that movie name is in the dataframe
