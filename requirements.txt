@@ -3,3 +3,4 @@ gunicorn==20.1.0  # Add Gunicorn for production deployment
 pandas
 numpy
 Werkzeug<2.3
+flask_cors
