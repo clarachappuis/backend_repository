@@ -5,6 +5,6 @@ numpy
 Werkzeug<2.3
 flask_cors
 plotly
-wordcloud==1.8.2
+wordcloud
 matplotlib==3.6.2
 ipywidgets==8.0.2
