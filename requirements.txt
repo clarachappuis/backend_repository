@@ -6,5 +6,4 @@ Werkzeug<2.3
 flask_cors
 plotly
 wordcloud
-matplotlib==3.6.2
 ipywidgets==8.0.2
