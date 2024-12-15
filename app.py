@@ -2,10 +2,18 @@ import pandas as pd
 import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from ast import literal_eval
 
 
 movie_final = pd.read_csv('_data/movie_final.csv')
 
+
+def str_to_array(str_vec):
+    # Strip brackets and spaces, then split the string by whitespace
+    return np.array([float(x) for x in str_vec.strip('[]').split()], dtype=np.float64)
+
+# Apply the conversion to the 'Topics' column
+movie_final['Topics'] = movie_final['Topics'].apply(str_to_array)
 
 def recommend_similar_movie(movie_name):
   # Check that movie name is in the dataframe
@@ -19,7 +27,7 @@ def recommend_similar_movie(movie_name):
 
     # Euclidean distances
     distances = other_movies['Topics'].apply(
-        lambda x: np.linalg.norm(x - movie_infos['Topics'])
+        lambda x: np.linalg.norm(x- movie_infos['Topics'])
     )
 
     closest_movie = distances.nsmallest(1).index[-1]
