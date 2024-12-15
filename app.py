@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
 
 
 movie_final = pd.read_csv('_data/movie_final.csv')
@@ -25,6 +27,7 @@ def recommend_similar_movie(movie_name):
   
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/recommend', methods=['POST'])
 
@@ -36,7 +39,7 @@ def recommend():
         data = request.get_json()
         
         # Extract the movie name from the JSON data
-        movie_name = data.get('movie', '')
+        movie_name = data.get('movie_name', '')
         
         # Your recommendation logic here
         recommendation = f"Recommended movie based on {movie_name}"
