@@ -40,9 +40,11 @@ def recommend():
         
         # Extract the movie name from the JSON data
         movie_name = data.get('movie_name', '')
+
+        recommendation = recommend_similar_movie(movie_name)
         
         # Your recommendation logic here
-        recommendation = f"Recommended movie based on {movie_name}"
+        #recommendation = f"Recommended movie based on {movie_name}"
         
         return jsonify({'recommendation': recommendation})
     else:
